@@ -39,15 +39,24 @@ var LoadingUI = (function (_super) {
     function LoadingUI() {
         var _this = _super.call(this) || this;
         _this.createView();
+        _this.addEventListener(egret.Event.ADDED_TO_STAGE, _this.onAddToStage, _this);
         return _this;
     }
+    LoadingUI.prototype.onAddToStage = function () {
+        this.width = this.stage.stageWidth;
+        this.height = this.stage.stageHeight;
+        this.createView();
+    };
     LoadingUI.prototype.createView = function () {
         this.textField = new egret.TextField();
         this.addChild(this.textField);
-        this.textField.y = 300;
         this.textField.width = 480;
-        this.textField.height = 100;
+        this.textField.y = this.height / 2;
+        this.textField.x = (this.width - this.textField.width) / 2;
         this.textField.textAlign = "center";
+        /*this.progressBar = new eui.ProgressBar();
+        this.addChild(this.progressBar);*/
+        // console.log(this.progressBar);
     };
     LoadingUI.prototype.setProgress = function (current, total) {
         this.textField.text = "Loading..." + current + "/" + total;
@@ -55,3 +64,4 @@ var LoadingUI = (function (_super) {
     return LoadingUI;
 }(egret.Sprite));
 __reflect(LoadingUI.prototype, "LoadingUI");
+//# sourceMappingURL=LoadingUI.js.map

@@ -184,8 +184,17 @@ var Main = (function (_super) {
         button.label = "Click!";
         button.horizontalCenter = 0;
         button.verticalCenter = 0;
-        this.addChild(button);
+        // this.addChild(button);
         button.addEventListener(egret.TouchEvent.TOUCH_TAP, this.onButtonClick, this);
+        this.progressBar = new eui.ProgressBar();
+        this.progressBar.horizontalCenter = 0;
+        this.progressBar.verticalCenter = 0;
+        this.progressBar.width = 480;
+        this.progressBar.height = 100;
+        this.progressBar.value = 50;
+        // this.progressBar.thumb.
+        // this.progressBar.thumb.x = 50;
+        this.addChild(this.progressBar);
     };
     /**
      * 根据name关键字创建一个Bitmap对象。name属性请参考resources/resource.json配置文件的内容。
@@ -238,3 +247,4 @@ var Main = (function (_super) {
     return Main;
 }(eui.UILayer));
 __reflect(Main.prototype, "Main");
+//# sourceMappingURL=Main.js.map

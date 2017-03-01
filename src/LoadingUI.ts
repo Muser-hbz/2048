@@ -27,25 +27,38 @@
 //
 //////////////////////////////////////////////////////////////////////////////////////
 
-class LoadingUI extends egret.Sprite {
+class LoadingUI extends eui.Group {
 
     public constructor() {
         super();
         this.createView();
+        this.addEventListener(egret.Event.ADDED_TO_STAGE, this.onAddToStage, this);
     }
 
-    private textField:egret.TextField;
+    private textField: egret.TextField;
+    private progressBar: eui.ProgressBar;
 
-    private createView():void {
+    private onAddToStage(): void {
+        this.width = this.stage.stageWidth;
+        this.height = this.stage.stageHeight;
+        this.createView();
+    }
+
+    private createView(): void {
         this.textField = new egret.TextField();
         this.addChild(this.textField);
-        this.textField.y = 300;
         this.textField.width = 480;
-        this.textField.height = 100;
+        this.textField.y = this.height / 2;
+        this.textField.x = (this.width - this.textField.width) / 2;
         this.textField.textAlign = "center";
+
+        /*this.progressBar = new eui.ProgressBar();
+        this.addChild(this.progressBar);*/
+        // console.log(this.progressBar);
+
     }
 
-    public setProgress(current:number, total:number):void {
+    public setProgress(current: number, total: number): void {
         this.textField.text = `Loading...${current}/${total}`;
     }
 }

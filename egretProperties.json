@@ -23,6 +23,10 @@
     },
     {
       "name": "tween"
+    },
+    {
+      "name": "pureMVC",
+      "path": "E:/pureMVC"
     }
   ]
 }
